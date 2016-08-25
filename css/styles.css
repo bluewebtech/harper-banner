@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Exo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.banner ul.slides {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.banner ul.slides li, .banner .overlay  {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-color: #464646;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.banner ul.slides li h1, .banner .overlay h1 {
+    margin: 18% auto 0 auto;
+    width: 60%;
+    color: #000000;
+    font-size: 80px;
+    text-align: center;
+    text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff, 2px 2px 2px #000000;
+    cursor: default;
+}
+
+.banner ul.slides li h2, .banner .overlay h2 {
+    margin: 0 auto;
+    width: 55%;
+    color: #000000;
+    font-size: 30px;
+    text-align: center;
+    text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff, 2px 2px 2px #000000;
+    cursor: default;
+}
+
+.banner ul.items {
+    width: 100%;
+    position: absolute;
+    left: 42%;
+    bottom: 20px;
+    list-style-type: none;
+}
+
+.banner ul.items li {
+    margin-left: 20px;
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    -moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+    float: left;
+    cursor: pointer;
+}
+
+.passion {
+    font-size: 20px;
+    vertical-align: middle;
+}
