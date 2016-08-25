@@ -55,7 +55,10 @@
              * @return {void}
              */
             base: function () {
-                $(this.slides()[this.first()]).css({'background-image': 'url("' + $(this.slides()[this.first()]).data('background') + '")'}).show();
+                $(this.slides()[this.first()])
+                    .css({'background-image': 'url("' + $(this.slides()[this.first()])
+                    .data('background') + '")'})
+                    .show();
             },
 
             /**
@@ -101,12 +104,14 @@
                 $(selector + ' .overlay')
                     .html($(this.slides()[current]).html())
                     .show()
-                    .css({'background-image': 'url("' + $(this.slides()[current]).data('background') + '")'})
+                    .css({'background-image': 'url("' + $(this.slides()[current])
+                    .data('background') + '")'})
                     .fadeOut(2000);
 
                 $(this.slides()[next])
                     .hide()
-                    .css({'background-image': 'url("' + $(this.slides()[next]).data('background') + '")'})
+                    .css({'background-image': 'url("' + $(this.slides()[next])
+                    .data('background') + '")'})
                     .fadeIn(4000);
             },
 
