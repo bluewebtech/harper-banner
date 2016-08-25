@@ -43,6 +43,7 @@
                 self.count = 0;
 
                 if (self.total() > 0) {
+                    self.controls();
                     self.base();
                     setInterval(self.transition, timer);
                 }
@@ -55,6 +56,17 @@
              */
             base: function () {
                 $(this.slides()[this.first()]).css({'background-image': 'url("' + $(this.slides()[this.first()]).data('background') + '")'}).show();
+            },
+
+            /**
+             * Set and populate all controls.
+             *
+             * @return {void}
+             */
+            controls: function () {
+                for (i = 0; i < this.total(); i++) {
+                    $(selector + ' ul.controls').append('<li></li>');
+                }
             },
 
             /**

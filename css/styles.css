@@ -30,44 +30,71 @@
     user-select: none;
 }
 
+.banner ul.slides li .holder, .banner .overlay .holder  {
+    margin: 10% auto 0 auto;
+    padding: 50px;
+    width: 70%;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: -1px -1px 0 #d4d4d4, 1px -1px 0 #d4d4d4, -1px 1px 0 #d4d4d4, 1px 1px 0 #d4d4d4, 2px 2px 2px #000000;
+    -webkit-border-radius: 34px 20px 20px 20px;-moz-border-radius: 34px 20px 20px 20px;border-radius: 34px 20px 20px 20px;
+    text-align: center;
+}
+
 .banner ul.slides li h1, .banner .overlay h1 {
-    margin: 18% auto 0 auto;
-    width: 60%;
+    margin: 0 auto;
     color: #000000;
     font-size: 80px;
     text-align: center;
-    text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff, 2px 2px 2px #000000;
+    text-shadow: -1px -1px 0 #d4d4d4, 1px -1px 0 #d4d4d4, -1px 1px 0 #d4d4d4, 1px 1px 0 #d4d4d4, 2px 2px 2px #000000;
     cursor: default;
 }
 
 .banner ul.slides li h2, .banner .overlay h2 {
     margin: 0 auto;
-    width: 55%;
     color: #000000;
     font-size: 30px;
     text-align: center;
-    text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff, 2px 2px 2px #000000;
+    text-shadow: -1px -1px 0 #d4d4d4, 1px -1px 0 #d4d4d4, -1px 1px 0 #d4d4d4, 1px 1px 0 #d4d4d4, 2px 2px 2px #000000;
     cursor: default;
 }
 
-.banner ul.items {
-    width: 100%;
+.banner ul.controls {
+    margin-left: -50px;
     position: absolute;
-    left: 42%;
+    left: 50%;
     bottom: 20px;
-    list-style-type: none;
+    list-style:none;
+    padding-left:0;
+    text-align: center;
 }
 
-.banner ul.items li {
-    margin-left: 20px;
+.banner ul.controls li {
+    margin-right: 20px;
     width: 20px;
     height: 20px;
-    background: #ffffff;
+    background: #000000;
+    float: left;
+    cursor: pointer;
+    box-shadow: -1px -1px 0 #d4d4d4, 1px -1px 0 #d4d4d4, -1px 1px 0 #d4d4d4, 1px 1px 0 #d4d4d4, 2px 2px 2px #000000;
     -moz-border-radius: 50px;
 	-webkit-border-radius: 50px;
 	border-radius: 50px;
-    float: left;
-    cursor: pointer;
+    -webkit-transition: background 0.2s ease-in-out;
+    -moz-transition: background 0.2s ease-in-out;
+    -o-transition: background 0.2s ease-in-out;
+    transition: background 0.2s ease-in-out;
+    -webkit-transition: background 0.2s ease-in-out;
+    -moz-transition: background 0.2s ease-in-out;
+    -o-transition: background 0.2s ease-in-out;
+    transition: background 0.2s ease-in-out;
+}
+
+.banner ul.controls li:hover {
+    background: #4D8CC4;
+}
+
+.banner ul.controls li:last-child {
+    margin-right: 0;
 }
 
 .passion {
