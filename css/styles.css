@@ -89,7 +89,7 @@
     transition: background 0.2s ease-in-out;
 }
 
-.banner ul.controls li:hover {
+.banner ul.controls li:hover, .banner ul.controls li.hover {
     background: #4D8CC4;
 }
 

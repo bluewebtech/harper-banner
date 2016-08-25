@@ -39,7 +39,7 @@
              */
             init: function (selector) {
                 var self = banner;
-                var timer = $(selector).data('duration');
+                var timer = settings.duration;
                 self.count = 0;
 
                 if (self.total() > 0) {
@@ -55,6 +55,7 @@
              * @return {void}
              */
             base: function () {
+                $(selector + ' ul.controls li').eq(this.first()).addClass('hover');
                 $(this.slides()[this.first()])
                     .css({'background-image': 'url("' + $(this.slides()[this.first()])
                     .data('background') + '")'})
@@ -70,6 +71,10 @@
                 for (i = 0; i < this.total(); i++) {
                     $(selector + ' ul.controls').append('<li></li>');
                 }
+
+                $(selector + ' ul.controls li').on('click', function () {
+                    console.log($(this).index());
+                })
             },
 
             /**
@@ -101,6 +106,9 @@
                 var current = (id - 1 < 0 ? this.last() : id - 1);
                 var next = id;
 
+                $(selector + ' ul.controls li').eq(current).removeClass('hover');
+                $(selector + ' ul.controls li').eq(next).addClass('hover');
+
                 $(selector + ' .overlay')
                     .html($(this.slides()[current]).html())
                     .show()
@@ -108,6 +116,7 @@
                     .data('background') + '")'})
                     .fadeOut(2000);
 
+                //$(this.slides()[next]).addClass('hover');
                 $(this.slides()[next])
                     .hide()
                     .css({'background-image': 'url("' + $(this.slides()[next])
