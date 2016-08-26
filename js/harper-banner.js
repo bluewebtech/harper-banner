@@ -1,5 +1,5 @@
 (function($) {
-    $.fn.banner = function(options) {
+    $.fn.harper = function(options) {
         /**
          * The plugin defaults.
          *
@@ -30,15 +30,15 @@
         /**
          * Banner inializer.
         */
-        var banner = {
+        var harper = {
             /**
              * Initialize the plugin.
              *
-             * @param  {string} selector
+             * @param {string} selector
              * @return {void}
              */
             init: function (selector) {
-                var self = banner;
+                var self = harper;
                 var timer = settings.duration;
                 self.count = 0;
 
@@ -73,7 +73,7 @@
                 }
 
                 $(selector + ' ul.controls li').on('click', function () {
-                    console.log($(this).index());
+                    //console.log($(this).index());
                 })
             },
 
@@ -155,7 +155,7 @@
              * @return {void}
              */
             transition: function () {
-                var self = banner;
+                var self = harper;
                 self.count++;
 
                 if (self.count == self.last()) {
@@ -172,6 +172,6 @@
         /**
          * Initialize the banner.
          */
-        banner.init(selector);
+        harper.init(selector);
     };
 }($));
