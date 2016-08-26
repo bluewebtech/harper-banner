@@ -97,6 +97,7 @@
 	                }
 	            },
 
+
 	            /**
 	             * Get the base/default slide.
 	             *
@@ -106,6 +107,7 @@
 	                $(selector + ' ul.controls li').eq(this.first()).addClass('hover');
 	                $(this.slides()[this.first()]).css({ 'background-image': 'url("' + $(this.slides()[this.first()]).data('background') + '")' }).show();
 	            },
+
 
 	            /**
 	             * Set and populate all controls.
@@ -122,6 +124,7 @@
 	                });
 	            },
 
+
 	            /**
 	             * Get the slide root index.
 	             * This should always have an index of 0.
@@ -132,6 +135,7 @@
 	                return 0;
 	            },
 
+
 	            /**
 	             * Get the index of the last slide.
 	             *
@@ -140,6 +144,7 @@
 	            last: function last() {
 	                return this.total() - 1;
 	            },
+
 
 	            /**
 	             * Run the slide transitions.
@@ -159,6 +164,7 @@
 	                //$(this.slides()[next]).addClass('hover');
 	                $(this.slides()[next]).hide().css({ 'background-image': 'url("' + $(this.slides()[next]).data('background') + '")' }).fadeIn(4000);
 	            },
+
 
 	            /**
 	             * Get all available slides.
@@ -185,6 +191,7 @@
 	            total: function total() {
 	                return this.slides().length;
 	            },
+
 
 	            /**
 	             * Handle the slide transition position.

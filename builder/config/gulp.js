@@ -173,7 +173,7 @@ module.exports =
         return {
             src: this.root() + json.src,
             dest: this.root() + json.dest,
-            watch: this.dir(this.src() + this.ext.js + '.app..**.') + '*' + this.ext.js,
+            watch: this.dir(this.src() + '.**.') + '*' + this.ext.js,
             webpack: this.root() + json.webpack
         };
     },

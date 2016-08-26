@@ -37,7 +37,7 @@
              * @param {string} selector
              * @return {void}
              */
-            init: function (selector) {
+            init (selector) {
                 var self = harper;
                 var timer = settings.duration;
                 self.count = 0;
@@ -54,7 +54,7 @@
              *
              * @return {void}
              */
-            base: function () {
+            base () {
                 $(selector + ' ul.controls li').eq(this.first()).addClass('hover');
                 $(this.slides()[this.first()])
                     .css({'background-image': 'url("' + $(this.slides()[this.first()])
@@ -67,7 +67,7 @@
              *
              * @return {void}
              */
-            controls: function () {
+            controls () {
                 for (var i = 0; i < this.total(); i++) {
                     $(selector + ' ul.controls').append('<li></li>');
                 }
@@ -83,7 +83,7 @@
              *
              * @return {int}
              */
-            first: function () {
+            first () {
                 return 0;
             },
 
@@ -92,7 +92,7 @@
              *
              * @return {int}
              */
-            last: function () {
+            last () {
                 return this.total() - 1;
             },
 
@@ -102,7 +102,7 @@
              * @param {int} id
              * @return {void}
              */
-            slide: function (id) {
+            slide (id) {
                 var current = (id - 1 < 0 ? this.last() : id - 1);
                 var next = id;
 
@@ -145,7 +145,7 @@
              *
              * @return {int}
              */
-            total: function () {
+            total () {
                 return this.slides().length;
             },
 
@@ -154,7 +154,7 @@
              *
              * @return {void}
              */
-            transition: function () {
+            transition () {
                 var self = harper;
                 self.count++;
 
