@@ -24,8 +24,20 @@ Well, jQuery of course. That should be about it, really.
 
 ## Installation
 
+#### Un-Minified
+
 ```html
-<script type="text/javascript" src="harper-banner.js"></script>
+<link type="text/css" href="dist/harper-banner.css" rel="stylesheet" />
+<script type="text/javascript" src="dist/harper-banner.js"></script>
+```
+
+Or of course...
+
+#### Minified
+
+```html
+<link type="text/css" href="dist/harper-banner.min.css" rel="stylesheet" />
+<script type="text/javascript" src="dist/harper-banner.min.js"></script>
 ```
 
 ## Defaults / Options
