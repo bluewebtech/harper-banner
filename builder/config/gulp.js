@@ -3,9 +3,7 @@
  *
  * This configuration module contains all path and extension values.
  */
-module.exports =
-{
-
+module.exports = {
     path: require('path'),
 
     /**
@@ -13,8 +11,7 @@ module.exports =
      *
      * @return obj
      */
-    ext:
-    {
+    ext: {
         css: '.css',
         js: '.js',
         min: '.min',
@@ -26,8 +23,7 @@ module.exports =
      *
      * @return obj
      */
-    file:
-    {
+    file: {
         app: 'app',
         css: 'style',
         lib: 'lib'
@@ -38,8 +34,7 @@ module.exports =
      *
      * @return {path.sep|*|MONTH_TO_NUM.sep}
      */
-    ds: function ()
-    {
+    ds: function () {
         return require('path').sep;
     },
 
@@ -49,8 +44,7 @@ module.exports =
      * @param path string
      * @return string
      */
-    dir: function (path)
-    {
+    dir: function (path) {
         return path.split('.').join(this.ds());
     },
 
@@ -59,8 +53,7 @@ module.exports =
      *
      * @return string
      */
-    root: function ()
-    {
+    root: function () {
         return __dirname.replace('builder/config', '');
     },
 
@@ -69,8 +62,7 @@ module.exports =
      *
      * @return string
      */
-    base: function ()
-    {
+    base: function () {
         return this.root();
     },
 
@@ -79,8 +71,7 @@ module.exports =
      *
      * @return string
      */
-    resources: function ()
-    {
+    resources: function () {
         return this.root() + 'src';
     },
 
@@ -89,8 +80,7 @@ module.exports =
      *
      * @return string
      */
-    json: function ()
-    {
+    json: function () {
         return this.dir(__dirname.replace('config', 'json.'));
     },
 
@@ -99,8 +89,7 @@ module.exports =
      *
      * @return string
      */
-    dist: function ()
-    {
+    dist: function () {
         return this.dir(this.base() + '.dist');
     },
 
@@ -109,8 +98,7 @@ module.exports =
      *
      * @return string
      */
-    modules: function ()
-    {
+    modules: function () {
         return this.dir(this.root() + 'node_modules.');
     },
 
@@ -119,8 +107,7 @@ module.exports =
      *
      * @return string
      */
-    src: function ()
-    {
+    src: function () {
         return this.dir(this.resources());
     },
 
@@ -129,8 +116,7 @@ module.exports =
      *
      * @return obj
      */
-    readJson: function (path)
-    {
+    readJson: function (path) {
         return JSON.parse(require('fs').readFileSync(this.json() + path + '.json', 'utf8'));
     },
 
@@ -139,8 +125,7 @@ module.exports =
      *
      * @returns {obj}
      */
-    get: function ()
-    {
+    get: function () {
         return this.readJson('config');
     },
 
@@ -149,15 +134,14 @@ module.exports =
      *
      * @return obj
      */
-    style: function ()
-    {
+    style: function () {
         var json = this.readJson('sass');
 
         return {
             src: this.root() + json.src,
             dest: this.root() + json.dest,
             includes: this.root() + json.includes,
-            watch: this.dir(this.src() + this.ext.scss + '.**.') + '*' + this.ext.scss
+            watch: this.dir(this.src() + '.**.') + '*' + this.ext.scss
         };
     },
 
@@ -166,8 +150,7 @@ module.exports =
      *
      * @return obj
      */
-    js: function ()
-    {
+    js: function () {
         var json = this.readJson('js');
 
         return {
@@ -183,14 +166,12 @@ module.exports =
      *
      * @return array
      */
-    tasks: function ()
-    {
+    tasks: function () {
         return [
             'browser-sync',
             'js',
-            //'style',
+            'style',
             'watch'
         ];
     }
-
 };

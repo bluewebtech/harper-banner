@@ -11,11 +11,8 @@
  * ------------------------------------
  */
 var gulp = require('gulp'),
-
-    build =
-    {
-        config:
-        {
+    build = {
+        config: {
             gulp: './builder/config/gulp',
             webpack: './builder/config/webpack'
         },
@@ -27,8 +24,7 @@ var gulp = require('gulp'),
      *
      * @var object
      */
-    modules =
-    {
+    modules = {
         browserSync: require('browser-sync').create(),
         concat: require('gulp-concat'),
         es: require('event-stream'),
@@ -50,8 +46,7 @@ var gulp = require('gulp'),
      *
      * @var string
      */
-    config =
-    {
+    config = {
         gulp: require(build.config.gulp)
     },
 

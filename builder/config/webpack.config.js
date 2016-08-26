@@ -4,8 +4,7 @@ var path = require('path'),
     entry_path = path.resolve(app_path, 'src/harper-banner'),
     output_path = path.resolve(app_path, 'src/harper-banner');
 
-module.exports =
-{
+module.exports = {
     entry: {
         'harper-banner': entry_path,
         'harper-banner.min': entry_path

@@ -1,13 +1,10 @@
-module.exports = function (gulp, modules, config, reload)
-{
-
+module.exports = function (gulp, modules, config, reload) {
     /**
      * Compile and minify CSS.
      *
      * @return boolean
      */
-    gulp.task('style', function ()
-    {
+    gulp.task('style', function () {
         return gulp.src(config.gulp.style().src)
             .on('end', function(){modules.util.log('SASS compilation started.');})
             .pipe(modules.sass({includePaths: config.gulp.style().includes}))
@@ -33,5 +30,4 @@ module.exports = function (gulp, modules, config, reload)
             .on('end', function(){modules.util.log('CSS minification completed.');})
             .pipe(gulp.dest(config.gulp.style().dest));
     });
-
 };

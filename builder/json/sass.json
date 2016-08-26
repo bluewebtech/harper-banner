@@ -1,7 +1,5 @@
 {
-  "src": "resources/scss/style.scss",
-  "dest": "public/assets/css",
-  "includes": [
-    "resources/scss/foundation/scss/"
-  ]
+  "src": "src/harper-banner.scss",
+  "dest": "dist/",
+  "includes": []
 }
