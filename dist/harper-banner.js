@@ -104,6 +104,7 @@
 	             * @return {void}
 	             */
 	            base: function base() {
+	                $(selector).prepend('<div class="overlay"></div>');
 	                $(selector + ' ul.controls li').eq(this.first()).addClass('hover');
 	                $(this.slides()[this.first()]).css({ 'background-image': 'url("' + $(this.slides()[this.first()]).data('background') + '")' }).show();
 	            },
@@ -115,6 +116,8 @@
 	             * @return {void}
 	             */
 	            controls: function controls() {
+	                $(selector).append('<ul class="controls"></ul>');
+
 	                for (var i = 0; i < this.total(); i++) {
 	                    $(selector + ' ul.controls').append('<li></li>');
 	                }

@@ -34,7 +34,7 @@
     margin: 10% auto 0 auto;
     padding: 50px;
     width: 70%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     box-shadow: -1px -1px 0 #d4d4d4, 1px -1px 0 #d4d4d4, -1px 1px 0 #d4d4d4, 1px 1px 0 #d4d4d4, 2px 2px 2px #000000;
     -webkit-border-radius: 34px 20px 20px 20px;-moz-border-radius: 34px 20px 20px 20px;border-radius: 34px 20px 20px 20px;
     text-align: center;

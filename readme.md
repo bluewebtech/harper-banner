@@ -16,8 +16,6 @@ Aren't there enough scrolling and fading banners available. Well, yes of course.
 2. Ability to toggle slide controls.
 3. Add next and previous slide controls.
 4. Ability to toggle next and previous controls.
-5. Add overlay div to plugin source.
-6. Add controls ul into plugin source.
 7. Define additional transition effects.
 
 ## Requirements
