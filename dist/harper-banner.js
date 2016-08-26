@@ -240,14 +240,25 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.default = {
-	    element: '<ul class="controls"></ul>',
+	  /**
+	   * The HTML element.
+	   *
+	   * @type {string}
+	   */
+	  element: '<ul class="controls"></ul>',
 
-	    init: function init(selector) {
-	        $(selector).append(this.element);
-	    }
+	  /**
+	   * Initialize the module.
+	   *
+	   * @param {string} selector
+	   * @return {void}
+	   */
+	  init: function init(selector) {
+	    $(selector).append(this.element);
+	  }
 	};
 
 /***/ },
@@ -257,14 +268,25 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.default = {
-	    element: '<div class="overlay"></div>',
+	  /**
+	   * The HTML element.
+	   *
+	   * @type {string}
+	   */
+	  element: '<div class="overlay"></div>',
 
-	    init: function init(selector) {
-	        $(selector).prepend(this.element);
-	    }
+	  /**
+	   * Initialize the module.
+	   *
+	   * @param {string} selector
+	   * @return {void}
+	   */
+	  init: function init(selector) {
+	    $(selector).prepend(this.element);
+	  }
 	};
 
 /***/ }
