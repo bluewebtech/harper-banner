@@ -1,3 +1,6 @@
+import controls from './js/controls';
+import overlay from './js/overlay';
+
 (function($) {
     $.fn.harper = function(options) {
         /**
@@ -42,6 +45,9 @@
                 var timer = settings.duration;
                 self.count = 0;
 
+                overlay.init(selector);
+                controls.init(selector);
+
                 if (self.total() > 0) {
                     self.controls();
                     self.base();
@@ -55,7 +61,6 @@
              * @return {void}
              */
             base () {
-                $(selector).prepend('<div class="overlay"></div>');
                 $(selector + ' ul.controls li').eq(this.first()).addClass('hover');
                 $(this.slides()[this.first()])
                     .css({'background-image': 'url("' + $(this.slides()[this.first()])
@@ -69,8 +74,6 @@
              * @return {void}
              */
             controls () {
-                $(selector).append('<ul class="controls"></ul>');
-
                 for (var i = 0; i < this.total(); i++) {
                     $(selector + ' ul.controls').append('<li></li>');
                 }

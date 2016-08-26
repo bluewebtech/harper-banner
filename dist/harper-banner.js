@@ -42,9 +42,19 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	var _controls = __webpack_require__(1);
+
+	var _controls2 = _interopRequireDefault(_controls);
+
+	var _overlay = __webpack_require__(2);
+
+	var _overlay2 = _interopRequireDefault(_overlay);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	(function ($) {
 	    $.fn.harper = function (options) {
@@ -90,6 +100,9 @@
 	                var timer = settings.duration;
 	                self.count = 0;
 
+	                _overlay2.default.init(selector);
+	                _controls2.default.init(selector);
+
 	                if (self.total() > 0) {
 	                    self.controls();
 	                    self.base();
@@ -104,7 +117,6 @@
 	             * @return {void}
 	             */
 	            base: function base() {
-	                $(selector).prepend('<div class="overlay"></div>');
 	                $(selector + ' ul.controls li').eq(this.first()).addClass('hover');
 	                $(this.slides()[this.first()]).css({ 'background-image': 'url("' + $(this.slides()[this.first()]).data('background') + '")' }).show();
 	            },
@@ -116,8 +128,6 @@
 	             * @return {void}
 	             */
 	            controls: function controls() {
-	                $(selector).append('<ul class="controls"></ul>');
-
 	                for (var i = 0; i < this.total(); i++) {
 	                    $(selector + ' ul.controls').append('<li></li>');
 	                }
@@ -222,6 +232,40 @@
 	        harper.init(selector);
 	    };
 	})($);
+
+/***/ },
+/* 1 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = {
+	    element: '<ul class="controls"></ul>',
+
+	    init: function init(selector) {
+	        $(selector).append(this.element);
+	    }
+	};
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = {
+	    element: '<div class="overlay"></div>',
+
+	    init: function init(selector) {
+	        $(selector).prepend(this.element);
+	    }
+	};
 
 /***/ }
 /******/ ]);
