@@ -1,0 +1,5 @@
+{
+  "src": "src/harper-banner.js",
+  "dest": "dist/",
+  "webpack": "builder/config/webpack.config.js"
+}

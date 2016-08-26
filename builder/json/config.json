@@ -1,0 +1,6 @@
+{
+  "browser_sync": {
+    "proxy_url": "http://local.harper-banner/",
+    "inject_changes": true
+  }
+}

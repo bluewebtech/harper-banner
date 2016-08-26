@@ -10,7 +10,7 @@ Aren't there enough scrolling and fading banners available. Well, yes of course.
 4. Ability to set duration timer based on object setting or data attribute.
 5. Clickable controls to select specific slide (still in development)
 
-## To Do's:
+## To Do's
 
 1. Finish up controls to select specific slide.
 2. Ability to toggle slide controls.

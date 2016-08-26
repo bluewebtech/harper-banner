@@ -68,7 +68,7 @@
              * @return {void}
              */
             controls: function () {
-                for (i = 0; i < this.total(); i++) {
+                for (var i = 0; i < this.total(); i++) {
                     $(selector + ' ul.controls').append('<li></li>');
                 }
 
