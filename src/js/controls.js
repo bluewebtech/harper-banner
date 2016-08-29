@@ -12,7 +12,11 @@ export default {
      * @param {string} selector
      * @return {void}
      */
-    init (selector) {
+    init (selector, slides) {
         $(selector).append(this.element);
+
+        for (var i = 0; i < slides.length; i++) {
+            $(selector + ' ul.controls').append('<li></li>');
+        }
     }
 }

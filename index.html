@@ -43,7 +43,10 @@
         <script type="text/javascript" src="dist/harper-banner.min.js"></script>
         <script type="text/javascript">
         $(function () {
-            $('.banner').harper();
+            $('.banner').harper({
+                debug: true,
+                duration: 3000
+            });
         });
         </script>
     </body>

@@ -43,44 +43,34 @@ import overlay from './js/overlay';
             init (selector) {
                 var self = harper;
                 var timer = settings.duration;
-                self.count = 0;
+                self.slide = 0;
 
+                self.debug();
                 overlay.init(selector);
-                controls.init(selector);
+                controls.init(selector, this.slides());
+                self.getSlide(self.slide, true);
 
-                if (self.total() > 0) {
-                    self.controls();
-                    self.base();
-                    setInterval(self.transition, timer);
-                }
+                setInterval(self.transition, timer);
             },
 
             /**
-             * Get the base/default slide.
+             * The debug output.
              *
              * @return {void}
              */
-            base () {
-                $(selector + ' ul.controls li').eq(this.first()).addClass('hover');
-                $(this.slides()[this.first()])
-                    .css({'background-image': 'url("' + $(this.slides()[this.first()])
-                    .data('background') + '")'})
-                    .show();
-            },
+            debug () {
+                var self = harper;
+                var next;
 
-            /**
-             * Set and populate all controls.
-             *
-             * @return {void}
-             */
-            controls () {
-                for (var i = 0; i < this.total(); i++) {
-                    $(selector + ' ul.controls').append('<li></li>');
+                if (self.slide == self.last()) {
+                    next = self.first();
+                } else {
+                    next = self.slide + 1;
                 }
 
-                $(selector + ' ul.controls li').on('click', function () {
-                    //console.log($(this).index());
-                });
+                if (settings.debug) {
+                    console.log('Current: ' + self.slide + ' Next: ' + next + ' Last: ' + self.last());
+                }
             },
 
             /**
@@ -94,40 +84,49 @@ import overlay from './js/overlay';
             },
 
             /**
+             * Run the slide transitions.
+             *
+             * @param {int} id
+             * @return {void}
+             */
+            getSlide (slide, base = false) {
+                var self = harper;
+                var $slides = this.slides();
+                var current = slide;
+                var previous = (slide - 1 < 0 ? this.last() : slide - 1);
+                var overlayObject = $(selector + ' .overlay');
+                var overlaySlideObject = $($slides[previous]);
+                var currentSlideObject = $($slides[current]);
+                var controlItemObject = $(selector + ' ul.controls li');
+
+                overlayObject.html(overlaySlideObject.html()).show().css({'background-image': 'url("' + overlaySlideObject.data('background') + '")'}).fadeOut(2000);
+
+                if (base) {
+                    var baseSlideObject = $($slides[this.first()]);
+                    baseSlideObject.css({'background-image': 'url("' + baseSlideObject.data('background') + '")'}).show();
+                    controlItemObject.eq(this.first()).addClass('hover');
+                } else {
+                    self.debug();
+                    currentSlideObject.hide().css({'background-image': 'url("' + currentSlideObject.data('background') + '")'}).fadeIn(4000);
+                    controlItemObject.eq(previous).removeClass('hover');
+                    controlItemObject.eq(current).addClass('hover');
+                }
+
+                controlItemObject.on('click', function () {
+                    self.count = $(this).index();
+
+                    console.log(current);
+                    console.log($(this).index());
+                });
+            },
+
+            /**
              * Get the index of the last slide.
              *
              * @return {int}
              */
             last () {
                 return this.total() - 1;
-            },
-
-            /**
-             * Run the slide transitions.
-             *
-             * @param {int} id
-             * @return {void}
-             */
-            slide (id) {
-                var current = (id - 1 < 0 ? this.last() : id - 1);
-                var next = id;
-
-                $(selector + ' ul.controls li').eq(current).removeClass('hover');
-                $(selector + ' ul.controls li').eq(next).addClass('hover');
-
-                $(selector + ' .overlay')
-                    .html($(this.slides()[current]).html())
-                    .show()
-                    .css({'background-image': 'url("' + $(this.slides()[current])
-                    .data('background') + '")'})
-                    .fadeOut(2000);
-
-                //$(this.slides()[next]).addClass('hover');
-                $(this.slides()[next])
-                    .hide()
-                    .css({'background-image': 'url("' + $(this.slides()[next])
-                    .data('background') + '")'})
-                    .fadeIn(4000);
             },
 
             /**
@@ -162,16 +161,14 @@ import overlay from './js/overlay';
              */
             transition () {
                 var self = harper;
-                self.count++;
 
-                if (self.count == self.last()) {
-                    self.slide(self.count);
-                } else if (self.count > self.first() && self.count < self.total()) {
-                    self.slide(self.count);
+                if (self.slide == self.last()) {
+                    self.slide = 0;
                 } else {
-                    self.count = 0;
-                    self.slide(self.count);
+                    self.slide++;
                 }
+
+                self.getSlide(self.slide);
             }
         };
 
