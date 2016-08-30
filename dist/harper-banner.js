@@ -97,7 +97,10 @@
 	             */
 	            init: function init(selector) {
 	                var self = harper;
-	                var timer = settings.duration;
+	                self.timer = settings.duration;
+	                var interval;
+	                self.current = 0;
+	                self.previous = 0;
 	                self.slide = 0;
 
 	                self.debug();
@@ -105,7 +108,16 @@
 	                _controls2.default.init(selector, this.slides());
 	                self.getSlide(self.slide, true);
 
-	                setInterval(self.transition, timer);
+	                interval = setInterval(self.transition, self.timer);
+
+	                $(selector + ' ul.controls li').on('click', function () {
+	                    self.slide = $(this).index();
+	                    self.getSlide(self.slide);
+	                    clearInterval(interval);
+	                    setInterval(self.transition, self.timer);
+
+	                    $(selector + ' ul.controls li').removeClass('hover').eq(self.slide).addClass('hover');
+	                });
 	            },
 
 
@@ -152,14 +164,12 @@
 
 	                var self = harper;
 	                var $slides = this.slides();
-	                var current = slide;
-	                var previous = slide - 1 < 0 ? this.last() : slide - 1;
-	                var overlayObject = $(selector + ' .overlay');
-	                var overlaySlideObject = $($slides[previous]);
-	                var currentSlideObject = $($slides[current]);
+	                self.current = slide;
+	                self.previous = slide - 1 < 0 ? this.last() : slide - 1;
+	                var currentSlideObject = $($slides[self.current]);
 	                var controlItemObject = $(selector + ' ul.controls li');
 
-	                overlayObject.html(overlaySlideObject.html()).show().css({ 'background-image': 'url("' + overlaySlideObject.data('background') + '")' }).fadeOut(2000);
+	                _overlay2.default.get(selector, $($slides[self.previous]));
 
 	                if (base) {
 	                    var baseSlideObject = $($slides[this.first()]);
@@ -168,16 +178,8 @@
 	                } else {
 	                    self.debug();
 	                    currentSlideObject.hide().css({ 'background-image': 'url("' + currentSlideObject.data('background') + '")' }).fadeIn(4000);
-	                    controlItemObject.eq(previous).removeClass('hover');
-	                    controlItemObject.eq(current).addClass('hover');
+	                    $(selector + ' ul.controls li').removeClass('hover').eq(self.current).addClass('hover');
 	                }
-
-	                controlItemObject.on('click', function () {
-	                    self.count = $(this).index();
-
-	                    console.log(current);
-	                    console.log($(this).index());
-	                });
 	            },
 
 
@@ -300,6 +302,20 @@
 	   */
 	  init: function init(selector) {
 	    $(selector).prepend(this.element);
+	  },
+
+
+	  /**
+	   * Get the slide overlay.
+	   *
+	   * @param {string} selector
+	   * @param {object} slide
+	   * @return {void}
+	   */
+	  get: function get(selector, slide) {
+	    var overlayObject = $(selector + ' .overlay');
+
+	    overlayObject.html(slide.html()).show().css({ 'background-image': 'url("' + slide.data('background') + '")' }).fadeOut(2000);
 	  }
 	};
 

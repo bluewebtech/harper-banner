@@ -42,7 +42,10 @@ import overlay from './js/overlay';
              */
             init (selector) {
                 var self = harper;
-                var timer = settings.duration;
+                self.timer = settings.duration;
+                var interval;
+                self.current = 0;
+                self.previous = 0;
                 self.slide = 0;
 
                 self.debug();
@@ -50,7 +53,16 @@ import overlay from './js/overlay';
                 controls.init(selector, this.slides());
                 self.getSlide(self.slide, true);
 
-                setInterval(self.transition, timer);
+                interval = setInterval(self.transition, self.timer);
+
+                $(selector + ' ul.controls li').on('click', function () {
+                    self.slide = $(this).index();
+                    self.getSlide(self.slide);
+                    clearInterval(interval);
+                    setInterval(self.transition, self.timer);
+
+                    $(selector + ' ul.controls li').removeClass('hover').eq(self.slide).addClass('hover');
+                });
             },
 
             /**
@@ -92,14 +104,12 @@ import overlay from './js/overlay';
             getSlide (slide, base = false) {
                 var self = harper;
                 var $slides = this.slides();
-                var current = slide;
-                var previous = (slide - 1 < 0 ? this.last() : slide - 1);
-                var overlayObject = $(selector + ' .overlay');
-                var overlaySlideObject = $($slides[previous]);
-                var currentSlideObject = $($slides[current]);
+                self.current = slide;
+                self.previous = (slide - 1 < 0 ? this.last() : slide - 1);
+                var currentSlideObject = $($slides[self.current]);
                 var controlItemObject = $(selector + ' ul.controls li');
 
-                overlayObject.html(overlaySlideObject.html()).show().css({'background-image': 'url("' + overlaySlideObject.data('background') + '")'}).fadeOut(2000);
+                overlay.get(selector, $($slides[self.previous]));
 
                 if (base) {
                     var baseSlideObject = $($slides[this.first()]);
@@ -108,16 +118,8 @@ import overlay from './js/overlay';
                 } else {
                     self.debug();
                     currentSlideObject.hide().css({'background-image': 'url("' + currentSlideObject.data('background') + '")'}).fadeIn(4000);
-                    controlItemObject.eq(previous).removeClass('hover');
-                    controlItemObject.eq(current).addClass('hover');
+                    $(selector + ' ul.controls li').removeClass('hover').eq(self.current).addClass('hover');
                 }
-
-                controlItemObject.on('click', function () {
-                    self.count = $(this).index();
-
-                    console.log(current);
-                    console.log($(this).index());
-                });
             },
 
             /**
